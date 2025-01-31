@@ -1,0 +1,137 @@
+{
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": [
+        {
+          "name": "Angular",
+          "rate": 3.5
+        },
+        {
+          "name": "CSS",
+          "rate": 2.5
+        },
+        {
+          "name": "Tailwind",
+          "rate": 3.5
+        }
+      ]
+    },
+    {
+      "category": "UX/UI",
+      "items": [
+        {
+          "name": "Figma",
+          "rate": 4.5
+        },
+        {
+          "name": "Photoshop",
+          "rate": 3.5
+        },
+        {
+          "name": "Illustrator",
+          "rate": 2.5
+        },
+        {
+          "name": "Blender",
+          "rate": 2.5
+        }
+      ]
+    },
+    {
+      "category": "Backend",
+      "items": [
+        {
+          "name": "Symphony",
+          "rate": 3.5
+        },
+        {
+          "name": "MySQL",
+          "rate": 2.5
+        }
+      ]
+    },
+    {
+      "category": "Stack",
+      "items": [
+        {
+          "name": "Github",
+          "rate": 3.5
+        },
+        {
+          "name": "JetBrains",
+          "rate": 2.5
+        }
+      ]
+    }
+  ],
+  "about": [
+    {
+      "category": "Professional Experience",
+      "items": [
+        {
+          "title": "Software developer",
+          "institution": "Brandmanic, Innovative Social Technologies SL",
+          "duration": "oct 2023 - jan 2025",
+          "acquaintances": [
+            "Worked on a SAAS in influencer marketing.",
+            "Developed from scratch the UX-UI mockups of the platform.",
+            "Developed and implemented a design system based on Angular Material and Fuse.",
+            "Implemented the new visual identity of the brand across the platform.",
+            "Designed and implemented a widget-type digital marketing module.",
+            "Designed and implemented a dashboard design system for marketing analytics.",
+            "Organized the platform's figma environment, with 100+ screens, in a modular, object-oriented component system, applying DRY principles.",
+            "Designed landing pages for marketing campaigns."
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Education",
+      "items": [
+        {
+          "title": "Grau en Arts i Disseny",
+          "institution": "Escola Massana",
+          "duration": "oct 2014 - jul 2019",
+          "acquaintances": [
+            "Design thinking.",
+            "Lleis de la gestalt.",
+            "Tecnologies multimèdia.",
+            "Cultura visual.",
+            "Metodologia projectual.",
+            "Pensament crític."
+          ]
+        },
+        {
+          "title": "Bootcamp in fullstack web development",
+          "institution": "Le Wagon Barcelona",
+          "duration": "jul 2022 - sep 2022",
+          "acquaintances": [
+            "Ruby + Ruby on Rails",
+            "OOP",
+            "UML",
+            "MySQL"
+          ]
+        },
+        {
+          "title": "Web development",
+          "institution": "Aspasia Barcelona",
+          "duration": "mar 2023 - sep 2023",
+          "acquaintances": [
+            "React + React Native",
+            "Firebase"
+          ]
+        },
+        {
+          "title": "Degree in computer science",
+          "institution": "UOC - Universitat Oberta de Catalunya",
+          "duration": "oct 2024 - currently",
+          "acquaintances": [
+            "UML Language",
+            "C"
+          ]
+        }
+      ]
+    }
+  ]
+}

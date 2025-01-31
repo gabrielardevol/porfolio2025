@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  font-family: "Sora", serif;
+  font-optical-sizing: auto;
+  font-weight: 20;
+  font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background: #535353;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-left: 1px solid black;
+}
+
+#color-layer {
+  @apply absolute top-0 left-0 w-[100vw] h-[100vh] mix-blend-screen pointer-events-none;
+  background: linear-gradient(to left bottom, #ff0085, #0059ff);
+  z-index: 45;
+}
+
+img {
+  position: relative;
+}
+
+h1 {
+  font-weight: 500;
+}
+
+.emoji {
+  position: relative;
+  z-index: 50;
+}
+
+img  {
+  z-index: 50
+}
