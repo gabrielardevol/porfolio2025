@@ -15,8 +15,8 @@ import {LayoutService, LayoutType, SectionType} from './layout.service';
   ],
   template: `
 
-    <div class="w-full  overflow-hidden">
-      <div class="w-full bg-white flex flex-col h-full overflow-auto "
+    <div class="w-full flex justify-center overflow-hidden">
+      <div class="w-full max-w-[700px] bg-white flex flex-col h-full overflow-auto "
            [ngClass]="layout == 'detail' ? 'overflow-auto p-4 gap-4' : ''">
         <div class="w-full aspect-video bg-gray-300 flex items-end justify-end gap-1 rounded-xl " (click)="layout == 'detail' ? displayImage = undefined : null">
 

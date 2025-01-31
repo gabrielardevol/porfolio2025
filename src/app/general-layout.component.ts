@@ -2,14 +2,13 @@ import {Component, HostListener} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {VerticalLayoutComponent} from './vertical-layout.component';
 import {NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
-import {LogoComponent} from './logo.component';
 import {LayoutService, LayoutType, SectionType} from './layout.service';
 import {Subscription} from 'rxjs';
 import {MatMenuModule} from '@angular/material/menu';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, VerticalLayoutComponent, NgClass, NgStyle, VerticalLayoutComponent, LogoComponent, NgIf, MatMenuModule, NgForOf,],
+  imports: [RouterOutlet, VerticalLayoutComponent, NgClass, NgStyle, VerticalLayoutComponent, NgIf, MatMenuModule, NgForOf],
   styles: [`
     #main-grid {
       display: grid;
@@ -24,15 +23,20 @@ import {MatMenuModule} from '@angular/material/menu';
     }
 
     app-section {
-      border-radius: 1rem 1rem 0 0;
+      @apply sm:rounded-t-3xl
+    }
+
+    .sm-rows {
+      grid-template-rows: 64px 1fr!important;
     }
   `],
   template: `
-    <div class="flex flex-col gap-4 bg-black h-[100vh] relative items-center justify-center p-3">
+
+    <div class="flex flex-col gap-4 bg-black h-[100vh] relative items-center justify-center sm:p-3">
       <div
         id="main-grid"
+        [ngClass]="[layout === 'general' ? 'sm:rounded-3xl' : '', device === 'mobile' ? 'sm-rows' : '']"
         [ngStyle]="{
-        'border-radius': layout === 'general' ? '3rem' : '0 0 3rem 3rem',
         'gap': layout === 'general' ? '1px' : '',
     'grid-template-columns':
       section === 'projects' ? '0px 0px ' + viewportWidth + 'px' :
@@ -42,10 +46,10 @@ import {MatMenuModule} from '@angular/material/menu';
       (viewportWidth / 2 - logoWidth / 2) + 'px '+ logoWidth + 'px ' + (viewportWidth / 2 - logoWidth / 2) + 'px',
 
       'grid-template-rows':
-      section === 'projects' ? '32px ' + '0px 0px ' + viewportHeight + 'px' :
-      section === 'about' ? '32px ' +  viewportHeight + 'px 0px 0px' :
-      section === 'contact'  ? '32px ' +  '0px 0px ' + viewportHeight + 'px' :
-      section === 'skills' ? '32px ' + viewportHeight + 'px 0px 0px' :
+      section === 'projects' ? '64px ' + '0px 0px ' + viewportHeight + 'px' :
+      section === 'about' ? '64px ' +  viewportHeight + 'px 0px 0px' :
+      section === 'contact'  ? '64px ' +  '0px 0px ' + viewportHeight + 'px' :
+      section === 'skills' ? '64px ' + viewportHeight + 'px 0px 0px' :
       '0px ' + (viewportHeight / 2 - logoHeight / 2) + 'px ' + logoHeight + 'px ' + (viewportHeight / 2 - logoHeight / 2) + 'px'
   }"
 
@@ -53,12 +57,19 @@ import {MatMenuModule} from '@angular/material/menu';
         style="transition-duration: 500ms">
         <div style="grid-area: navbar"
              class="overflow-hidden flex justify-between items-center">
-          <app-logo style="" class="z-40 flex mix-blend-difference h-min"
-                    (click)="openSection(undefined);layoutService.setLayout('general')"
-                    [ngStyle]="{'width': 200}"
-                    [columnNumber]="15"
-                    [ngClass]="
-                    section ? '' : 'hidden'"/>
+
+<!--          horizontal logo -->
+
+          <div class="flex-wrap text-white grid"
+               [ngStyle]="{minWidth: '200px', gridTemplateColumns: 'repeat(7, 1fr)'}"
+               (click)="openSection(undefined);layoutService.setLayout('general')">
+            <div *ngFor='let char of  ["g", "a", "b", "r", "i", "e", "l", "a", "r" ,"d", "è" ,"v", "o", "l"], let i = index'
+                 class=" flex justify-center aspect-square  items-center font-black text-center rounded-full text-black text-2xl"
+                 [ngClass]="char ? 'bg-white' : 'bg-black'">
+              {{char}}
+            </div>
+          </div>
+
           <div (click)="menu = !menu"
             class="h-full aspect-square rounded-full flex items-center justify-center hover:bg-[#666666] cursor-pointer">
             <i class="material-icons text-white">menu</i>
@@ -79,12 +90,17 @@ import {MatMenuModule} from '@angular/material/menu';
         <app-section [name]="'skills'" [expanded]="section === 'skills'"
                      [sections]="['skills', 'about', 'contact', 'projects']" class="flex" style="grid-area: skills;"
                      (click)="openSection('skills')"/>
-        <app-logo style="grid-area: logo" class="z-40 flex mix-blend-difference"
-                  [ngStyle]="{'width': logoWidth}"
-                  [width]="logoWidth"
-                  [ngClass]="
-                    section ? 'hidden' : ''
-"/>
+
+        <!--          centered logo -->
+
+        <div class="flex-wrap text-white grid"
+             [ngStyle]="{minWidth: '200px', gridTemplateColumns: 'repeat(5, 1fr)'}">
+          <div *ngFor='let char of  ["g", "a", "b", "r", "i", "e", "l", "", "a", "r" ,"d", "è" ,"v", "o", "l"], let i = index'
+               class=" flex justify-center aspect-square  items-center font-black text-center rounded-full text-black text-2xl"
+               [ngClass]="char ? 'bg-white' : 'bg-black'">
+            {{char}}
+          </div>
+        </div>
 
         <app-section [name]="'contact'" [expanded]="section === 'contact'"
                      [sections]="['contact', 'about', 'skills', 'projects']" class="flex" style="grid-area: contact;"
@@ -169,7 +185,7 @@ export class GeneralLayoutComponent {
   }
 
   setSizes() {
-    this.viewportWidth = window.innerWidth < 1400 ? window.innerWidth - 30 : 1400;
+    this.viewportWidth = window.innerWidth < 1400 ? window.innerWidth : 1400;
     this.viewportHeight = window.innerHeight < 1000 ? window.innerHeight - 2 : 1000;
     this.logoWidth = this.viewportWidth / 4;
     this.logoHeight = (this.logoWidth / 5) * 3;
