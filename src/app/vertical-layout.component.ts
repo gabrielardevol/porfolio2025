@@ -30,7 +30,7 @@ import {ProjectDetailComponent} from './project-detail.component';
   ],
   template: `
       <div *ngIf="clickedSection == section || layout != 'vertical'  && !selectedProject"
-           class="flex flex-1 flex-col bg-black w-full transition-all duration-500  h-full overflow-y-scroll "
+           class="flex flex-1 flex-col bg-black w-full transition-all duration-500  h-full overflow-y-auto"
            [ngClass]="[layout == 'vertical' ? 'sm:rounded-3xl gap-[1px]' : '', device == 'mobile' ? '!h-[calc(100vh-64px)]' :'']">
 
 
