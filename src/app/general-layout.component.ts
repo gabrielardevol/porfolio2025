@@ -35,7 +35,7 @@ import {MatMenuModule} from '@angular/material/menu';
     <div class="flex flex-col gap-4 bg-black h-[100vh] relative items-center justify-center sm:p-3">
       <div
         id="main-grid"
-        [ngClass]="[layout === 'general' ? 'sm:rounded-3xl' : '', device === 'mobile' ? 'sm-rows' : '']"
+        [ngClass]="[layout === 'general' ? 'sm:rounded-3xl' : '', device === 'mobile' ? 'sm-rows' : '', layout === 'vertical' && device === 'desktop' ? 'rounded-b-3xl' : '']"
         [ngStyle]="{
         'gap': layout === 'general' ? '1px' : '',
     'grid-template-columns':
@@ -98,11 +98,10 @@ import {MatMenuModule} from '@angular/material/menu';
                      (click)="openSection('skills')"/>
 
         <!--          centered logo -->
-
-        <div class="flex-wrap text-white grid"
-             [ngStyle]="{minWidth: '200px', gridTemplateColumns: 'repeat(5, 1fr)'}">
+        <div class="flex-wrap text-white grid logo"
+             [ngStyle]="{minWidth: '130px', gridTemplateColumns: 'repeat(5, 1fr)'}">
           <div *ngFor='let char of  ["g", "a", "b", "r", "i", "e", "l", "", "a", "r" ,"d", "è" ,"v", "o", "l"], let i = index'
-               class=" flex justify-center aspect-square  items-center font-black text-center rounded-full text-black text-2xl"
+               class=" flex justify-center aspect-square  items-center font-black text-center rounded-full text-black text-3xl"
                [ngClass]="char ? 'bg-white' : 'bg-black'">
             {{char}}
           </div>
@@ -193,7 +192,7 @@ export class GeneralLayoutComponent {
   setSizes() {
     this.viewportWidth = window.innerWidth < 1400 ? window.innerWidth : 1400;
     this.viewportHeight = window.innerHeight < 1000 ? window.innerHeight - 2 : 1000;
-    this.logoWidth = this.viewportWidth / 4;
+    this.viewportWidth / 5 > 180 ? this.logoWidth = this.viewportWidth / 5 : this.logoWidth = 180;
     this.logoHeight = (this.logoWidth / 5) * 3;
   }
 

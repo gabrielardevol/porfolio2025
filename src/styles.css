@@ -23,11 +23,41 @@
   border-left: 1px solid black;
 }
 
+/* Definimos las propiedades animables */
+@property --color1 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #ff0085;
+}
+
+@property --color2 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #0059ff;
+}
+
+@keyframes colorAnimation {
+  0% {
+    --color1: #ff0085;
+    --color2: #0059ff;
+  }
+  50% {
+    --color1: #ff5900;
+    --color2: #00ffcc;
+  }
+  100% {
+    --color1: #ff0085;
+    --color2: #0059ff;
+  }
+}
+
 #color-layer {
   @apply absolute top-0 left-0 w-[100vw] h-[100vh] mix-blend-screen pointer-events-none;
-  background: linear-gradient(to left bottom, #ff0085, #0059ff);
+  background: linear-gradient(to left bottom, var(--color1), var(--color2));
+  animation: colorAnimation 18s infinite alternate ease-in-out;
   z-index: 45;
 }
+
 
 img {
   position: relative;
@@ -42,6 +72,6 @@ h1 {
   z-index: 50;
 }
 
-img  {
+#project img  {
   z-index: 50
 }
