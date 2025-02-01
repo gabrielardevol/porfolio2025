@@ -55,11 +55,10 @@ import {MatMenuModule} from '@angular/material/menu';
 
         class=" grid w-full transition-all duration-500 max-w-[1400px] max-h-[1000vh] relative"
         style="transition-duration: 500ms">
-        <div style="grid-area: navbar"
+        <nav style="grid-area: navbar"
              class="overflow-hidden flex justify-between items-center">
 
 <!--          horizontal logo -->
-
           <div class="flex-wrap text-white grid"
                [ngStyle]="{minWidth: '200px', gridTemplateColumns: 'repeat(7, 1fr)'}"
                (click)="openSection(undefined);layoutService.setLayout('general')">
@@ -70,19 +69,26 @@ import {MatMenuModule} from '@angular/material/menu';
             </div>
           </div>
 
-          <div (click)="menu = !menu"
-            class="h-full aspect-square rounded-full flex items-center justify-center hover:bg-[#666666] cursor-pointer">
-            <i class="material-icons text-white">menu</i>
-          </div>
-          <div class="absolute top-7 right-3 bg-white z-40 border rounded-xl overflow-hidden"
-               style="box-shadow: 0 0px 140px 70px rgba(0,0,0,0.28)"
-               *ngIf="menu"
-          >
-            <li class="w-full px-5 py-3 hover:bg-[#e5e7eb] cursor-pointer list-none" *ngFor="let section of ['experience', 'education', 'stack', 'projects', 'contact']">
-              {{section}}
-            </li>
-          </div>
-        </div>
+          <button *ngIf="layout == 'detail' && device === 'mobile'" (click)="layoutService.setLayout('vertical'); layoutService.selectProject(undefined)"
+                  class=" text-white font-black w-14 h-14 rounded-full flex items-center justify-center">
+            <i class="material-icons">
+              close
+            </i>
+          </button>
+
+<!--          <div (click)="menu = !menu"-->
+<!--            class="h-full aspect-square rounded-full flex items-center justify-center hover:bg-[#666666] cursor-pointer">-->
+<!--            <i class="material-icons text-white">menu</i>-->
+<!--          </div>-->
+<!--          <div class="absolute top-7 right-3 bg-white z-40 border rounded-xl overflow-hidden"-->
+<!--               style="box-shadow: 0 0px 140px 70px rgba(0,0,0,0.28)"-->
+<!--               *ngIf="menu"-->
+<!--          >-->
+<!--            <li class="w-full px-5 py-3 hover:bg-[#e5e7eb] cursor-pointer list-none" *ngFor="let section of ['experience', 'education', 'stack', 'projects', 'contact']">-->
+<!--              {{section}}-->
+<!--            </li>-->
+<!--          </div>-->
+        </nav>
 
         <app-section [clickedSection]="'about'" [expanded]="section === 'about'"
                      [sections]="['about', 'skills', 'contact', 'projects']" class="flex" style="grid-area: about;"
@@ -118,7 +124,7 @@ import {MatMenuModule} from '@angular/material/menu';
           arrow_back
         </i>
       </button>
-      <button *ngIf="layout == 'detail'" (click)="layoutService.setLayout('vertical'); layoutService.selectProject(undefined)"
+      <button *ngIf="layout == 'detail' && device === 'desktop'" (click)="layoutService.setLayout('vertical'); layoutService.selectProject(undefined)"
               style="box-shadow: 0 0px 80px 80px rgb(255 255 255 / 28%), 0 0px 0px 0px rgb(0 0 0 / 0.1)"
               class=" text-white font-black absolute bottom-2 right-4 w-14 h-14 rounded-full bg-black flex items-center justify-center">
         <i class="material-icons">
