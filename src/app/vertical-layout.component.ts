@@ -25,7 +25,7 @@ import {ProjectDetailComponent} from './project-detail.component';
   ],
   template: `
     <div *ngIf="name == section || layout != 'vertical'  && !selectedProject"
-         class="flex flex-1 flex-col bg-black w-full transition-all duration-500  h-full overflow-auto "
+         class="flex flex-1 flex-col bg-black w-full transition-all duration-500  h-full overflow-y-scroll "
          [ngClass]="[layout == 'vertical' ? 'sm:rounded-3xl gap-[1px]' : '', device == 'mobile' ? 'h-[calc(100vh-64px)]' :'']">
 
 
