@@ -84,10 +84,10 @@ import {MatMenuModule} from '@angular/material/menu';
           </div>
         </div>
 
-        <app-section [name]="'about'" [expanded]="section === 'about'"
+        <app-section [clickedSection]="'about'" [expanded]="section === 'about'"
                      [sections]="['about', 'skills', 'contact', 'projects']" class="flex" style="grid-area: about;"
                      (click)="openSection('about')"/>
-        <app-section [name]="'skills'" [expanded]="section === 'skills'"
+        <app-section [clickedSection]="'skills'" [expanded]="section === 'skills'"
                      [sections]="['skills', 'about', 'contact', 'projects']" class="flex" style="grid-area: skills;"
                      (click)="openSection('skills')"/>
 
@@ -102,10 +102,10 @@ import {MatMenuModule} from '@angular/material/menu';
           </div>
         </div>
 
-        <app-section [name]="'contact'" [expanded]="section === 'contact'"
+        <app-section [clickedSection]="'contact'" [expanded]="section === 'contact'"
                      [sections]="['contact', 'about', 'skills', 'projects']" class="flex" style="grid-area: contact;"
                      (click)="openSection('contact')"/>
-        <app-section [name]="'projects'" [expanded]="section === 'projects'"
+        <app-section [clickedSection]="'projects'" [expanded]="section === 'projects'"
                      [sections]="['projects', 'contact', 'about', 'skills']" class="flex" style="grid-area: projects;"
                      (click)="openSection('projects')"/>
 
